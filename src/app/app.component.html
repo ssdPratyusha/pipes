@@ -1,0 +1,36 @@
+{{Date|date}}
+
+<p>Passing arguments</p>
+{{Date|date:'short'}}<br>   
+    <!-- 2/27/20, 11:18 AM -->
+{{Date|date:'fullDate'}}<br>
+<!-- Thursday, February 27, 2020 -->
+{{Date|date:'longDate'}}<br>
+<!-- February 27, 2020 -->
+{{Date|date:'mediumDate'}}<br>
+<!-- Feb 27, 2020 -->
+{{Date|date:'shortDate'}}<br>
+<!-- 2/27/20 -->
+{{Date|date:'mediumTime'}}<br>
+<!-- 11:20:52 AM -->
+{{Date|date:'shortTime'}}
+<!-- 11:21 AM -->
+<hr>
+<p>Lowercase and Uppercase</p>
+{{name|uppercase}} 
+<!-- DEVI -->
+<p> Chaining of pipes</p>
+{{name|uppercase|lowercase}} <br>
+<!-- First it is converted to uppercase (DEVI) Then to lowercase -->
+{{name|titlecase}} 
+<p>SlicePipe</p>
+{{str|slice:3:5}}<br>
+{{str|slice:11:20}}<br>
+{{str|slice:-9}}
+<p> decimal pipe</p>
+<p>this is number{{num |number}}</p>
+<p>this is number{{num |number:'3.1-2'}}</p>
+<p>this is number{{num |number:'7.1-5'}}</p>
+
+
+{{25|piping}}

@@ -1,0 +1,325 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red155\green0\blue211;\red255\green0\blue0;\red0\green176\blue80;\red128\green100\blue162;\red0\green77\blue187;\red192\green80\blue77;\red0\green0\blue0;\red209\green99\blue73;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs48\lang9 Pipes:\cf0\par
+\fs22\par
+The Angular pipes are used to transform the data.These are similar to filters in Angular Js\par
+Angular 2 bulit -in pipes \cf2 like currency pipe, date pipe, number pipe, percent pipe, decimal pipe &slice pipe\par
+\cf0 There are many circumstances where we may have to change the appearance of the data before presenting it the user.\par
+That is where Angular 2 Pipes comes handy. They take the data as input and transforms that data to get the desired output.\par
+\par
+\cf3 Syntax of Pipe\cf0 :  \ul Expression | pipeOperator[:pipeArguments]\par
+\ulnone Where\par
+\cf4 Expression : is the expression, which you want to transform\par
+| : is the Pipe Character\par
+pipeOperator : name of the Pipe\par
+pipeArguments: arguments to the Pipe\par
+\cf5 Example of date pipe:\cf0\par
+\cf6 import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+@Component(\{\par
+    selector: 'app-root',\par
+    templateUrl: `<p> Unformatted date : \{\{toDate \}\} </p>\par
+                  <p> Formatted date : \{\{toDate | date\}\} </p>` \par
+\}) \par
+export class AppComponent \par
+\{ \par
+    title: string = 'pipe Example' ; \par
+    toDate: Date = new Date(); \par
+\}\par
+\cf2\par
+output:\par
+Formatted date: february 22,2016\par
+\cf0 In the above example, we are taking current date and transforming it into the easily readable format using the date pipe. \par
+\par
+\cf1 Passing arguments\cf0 : We can also pass optional arguments to the pipe. The arguments are added to the pipe using a colon \cf2 (:)\cf0  sign followed by the value of the argument. If there are multiple arguments separate each of them with the colon (:). \par
+\cf5 Example: \{\{toDate | date:'medium'\}\}\par
+\par
+\cf3 FORMAT NAME\tab EQUIVALENT FORMAT STRNG\tab EXAMPLE\par
+(FOR EN-US)\par
+\cf5 medium\tab yMMMdjms\tab Sep 3, 2010, 12:05:08 PM\par
+short\tab yMdjm\tab 9/3/2010, 12:05 PM\par
+fullDate\tab yMMMMEEEEd\tab Friday, September 3, 2010\par
+longDate\tab yMMMMd\tab September 3, 2010\par
+mediumDate\tab yMMMd\tab Sep 3, 2010\par
+shortDate\tab yMd\tab 9/3/2010\par
+mediumTime\tab jms\tab 12:05:08 PM\par
+shortTime\tab jm\tab 12:05 PM\par
+ Example: date_expression | date[:format]\cf0\par
+The parameter \lquote medium\rquote  displays the date as Nov 22, 2016, 10:04:10 PM\par
+\cf4 Where\cf5\par
+\cf1 Chaining Pipes:\cf0\par
+Pipes can be chained together to make use of multiple pipes in one expression. For example in the following code, the toDate is passed to the Date Pipe. The output of Date pipe is then passed to the uppercase pipe.\par
+\cf3 Example: toDate | date | uppercase\par
+\par
+\cf1\fs56 The Angular 2 Built-in pipes\cf3\fs22\par
+\cf5\fs32 DatePipe: The Date pipe formats the date according to locale rules. \cf3\fs22 The syntax of the date pipe is as shown below\par
+Syntax:date_expression | date[:format]\par
+\cf4\par
+date_expression is a date object or a number\par
+date is the name of the pipe\par
+format is the date and time format string which indicates the format in which date/time components are displayed.\par
+\par
+\cf5 COMPONENT\tab FORMAT\tab EXAMPLE\par
+Year\tab y\tab 2016\par
+Year\tab yy\tab 16\par
+Month\tab M\tab 9\par
+Month\tab M\tab 99\par
+Month\tab MMM\tab Nov\par
+Month\tab MMMM\tab November\par
+Day\tab d\tab 9\par
+Day\tab dd\tab 09\par
+hour\tab j\tab 9\par
+hour\tab jj\tab 09\par
+hour\tab h\tab 9 AM\par
+hour\tab hh\tab 09 AM\par
+hour24\tab H\tab 13\par
+hour24\tab HH\tab 13\par
+minute\tab m\tab 9\par
+minute\tab mm\tab 09\par
+second\tab s\tab 9\par
+second\tab ss\tab 99\par
+Time zone\tab z\tab Pacific Standard time\par
+Time zone\tab Z\tab GMT-8:00\par
+Time zone\tab a\tab PM\par
+era\tab G\tab AD\par
+era\tab GGGG\tab Anno Domini\par
+\par
+Example of Datepipe:\cf2\par
+\cf6 import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+@Component(\{\par
+    selector: 'app-root',\par
+    template:`<p>medium : \{\{toDate | date:'medium'\}\} </p>\par
+              <p>short : \{\{toDate | date:'short'\}\} </p>\par
+              <p>fullDate : \{\{toDate | date:'fullDate'\}\} </p>\par
+              <p>longDate : \{\{toDate | date:'longDate'\}\} </p>\par
+              <p>mediumDate : \{\{toDate | date:'mediumDate'\}\} </p>\par
+              <p>shortDate : \{\{toDate | date:'shortDate'\}\} </p>\par
+              <p>mediumTime : \{\{toDate | date:'mediumTime'\}\} </p>\par
+              <p>dd-MM-y : \{\{toDate | date:'dd-MM-y'\}\} </p>\par
+              <p>dd-MM-yy HH:mm : \{\{toDate | date:'dd-MM-yy HH:mm'\}\} </p>`\par
+\})\par
+export class AppComponent\par
+\{\par
+    title: string = 'Angular 2 pipes Example' ;\par
+    toDate: Date = new Date();\par
+\}\par
+\cf5\fs48 UpperCasePipe & LowerCasePipe\cf6\fs22\par
+import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+ \par
+@Component(\{\par
+    selector: 'app-root',\par
+    template:`<p>Unformatted :\{\{msg\}\} </p>\par
+              <p>Uppercase :\{\{msg | uppercase\}\} </p>\par
+              <p>Lowercase :\{\{msg | lowercase\}\} </p>`\par
+\})\par
+export class AppComponent\par
+\{\par
+    title: string = 'Angular 2 pipes Example' ;\par
+    msg: string= 'Welcome to Angular 2';\par
+\}\par
+\cf5\fs32 SlicePipe:\par
+\cf7\fs22 Slicepipe  creates a new array or string from the given array or string respectively.\par
+Slice pipe uses slice keyword with pipe operator.\par
+\cf3 Syntax:array_or_string_expression | slice:start[:end]\par
+\cf4 array_or_string_expression is the string to slice\par
+slice is the name of the pipe\par
+start is the start position/index from where the slicing will start\par
+end is the ending index/position in the array/string\cf7\par
+1.If start index is positive, slice pipe will return the elements at start index from start and the elements after in array or string expression.\par
+2. If start index is negative, slice pipe will return the elements at start index from end and the elements after in array or string expression.\par
+3. If start index is positive and greater than the size of string or array expression then slice pipe will return empty.\par
+4. If start index is negative and greater than the size of string or array expression then slice pipe will return complete array or string.\par
+\par
+end: Ending index to slice given array or string to return as subset.\par
+\par
+1. If end index has not been provided then slice pipe will return elements till end.\par
+2. If end index is positive then slice pipe will return all elements before end index from the start of the array or string expression.\par
+3. If end index is negative then slice pipe will return all elements before end index from the end of the array or string expression.\par
+\par
+\cf3\fs32 0   1   2   3   4   5   6   7   8   9   10 \par
+ |   |   |   |   |   |   |   |   |   |   |    \par
+ a   b   c   d   e   f   g   h   i   j   k\par
+ |   |   |   |   |   |   |   |   |   |   |   \par
+-11 -10 -9  -8  -7  -6  -5  -4  -3  -2  -1 \par
+\par
+\cf2\fs22 Example:\par
+\cf5 myStr = "abcdefghijk"; \cf2\par
+Find the slice pipe with positive start and positive end index.\par
+\cf3\{\{myStr | slice:3:7\}\}  ------output  --->\cf4 defg \par
+\cf2 Find the slice pipe with positive start and negative end index.\par
+\cf3\{myStr | slice:3:-2\}\} ----------\cf4 defghi \par
+Slice pipe will return substring starting from index 3 i.e character d and will include all characters before index -2 i.e up to i.\par
+\cf2 Slice pipe with negative start index only.\par
+\cf3\{\{myStr | slice:-6\}\} \cf2 -------->\cf5 fghij\par
+Example:\par
+\cf7 app.component.ts\cf5\par
+\cf6 import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+@Component(\{\par
+    selector: 'app-root',\par
+    template:`<p>Complete String :\{\{msg\}\} </p>\par
+              <p>Example 1 :\{\{msg | slice:11:20\}\} </p>\par
+              <p>Example 2 :\{\{msg | slice:-9\}\} </p>`\par
+\})\par
+ \par
+export class AppComponent\par
+\{\par
+    title: string = 'Angular 2 pipes Example' ;\par
+    msg: string= 'Welcome to Angular 2';\par
+\}\par
+\par
+\cf5 DecimalPipe / NumberPipe:\par
+\cf7 The Decimal Pipe is used to Format a number as Text. This pipe will format the number according to locale rules.\par
+\cf3 Syntax \cf4 number_expression | number[:digitInfo]\par
+\cf5 Where\par
+number_expression is the number you want to format\par
+number is the name of the pipe\par
+digitInfo is a string which has the following format\par
+\{minIntegerDigits\}.\{minFractionDigits\}-\{maxFractionDigits\}\par
+Where\par
+minIntegerDigits is the minimum number of integer digits to use. Defaults to 1.\par
+minFractionDigits is the minimum number of digits after fraction. Defaults to 0.\par
+maxFractionDigits is the maximum number of digits after fraction. Defaults to 3.\par
+\cf8\par
+\par
+\cf2 Example:\cf8\par
+\cf6 import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+@Component(\{\par
+    selector: 'app-root',\par
+    template: `<p> Unformatted :\{\{num\}\}</p>\par
+               <p> Formatted :\{\{num | number\}\}</p>\par
+               <p> Formatted :\{\{num | number:'3.1-2'\}\}</p>\par
+               <p> Formatted :\{\{num | number:'7.1-5'\}\} </p>`\par
+\})\par
+ \par
+export class AppComponent\par
+\{\par
+    title: string = 'Angular 2 pipes Example' ;\par
+    num: number= 9542.14554;\par
+\}\par
+\cf2 PercentePipe:\par
+\cf7 Formats the given number as a percentage according to locale rules.\par
+\cf3 Syntax: \par
+number_expression | percent[:digitInfo]\par
+\cf5 Where\par
+number_expression is the number you want to format\par
+percent is the name of the pipe\par
+digitInfo is a string which has the following format. It is similar to used in decimal pipe\par
+\cf2 Example:\par
+\cf6 import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+ \par
+@Component(\{\par
+    selector: 'app-root',\par
+    template:`<p>Unformatted :\{\{per\}\} </p>\par
+              <p>Example 1 :\{\{per | percent \}\} </p>\par
+              <p>Example 2 :\{\{per | percent:'1.2-2'\}\} </p>`\par
+\})\par
+export class AppComponent\par
+\{\par
+    title: string = 'Angular 2 pipes Example' ;\par
+    per: number= .7414;2';\par
+\}\par
+\cf2 CurrencyPipe: \cf7 Formats a number as currency using locale rules.\par
+\cf3 Syntax:number_expression | currency[:currencyCode[:symbolDisplay[:digitInfo]]]\par
+\cf5 Where\par
+number_expression currency to format a number as currency.\par
+Currency is the name of the pipe\par
+currencyCode is the ISO 4217 currency code, such as USD for the US dollar and EUR for the euro.\par
+symbolDisplay is a boolean indicating whether to use the currency symbol or code. Use true to display symbol and false to use code\par
+digitInfo is similar to the one used in decimal pipe.\par
+\cf2 Example:\par
+\cf6 import \{ Component \} from '@angular/core';\par
+import \{ FormsModule \} from '@angular/forms';\par
+@Component(\{\par
+    selector: 'app-root',\par
+    template: `<p>Unformatted :\{\{cur\}\} </p>\par
+               <p>Example 1 :\{\{cur | currency \}\} </p>\par
+               <p>Example 2 :\{\{cur | currency:'INR':true:'4.2-2'\}\} </p>`\par
+\})\par
+ \par
+export class AppComponent\par
+\{\par
+    title: string = 'Angular 2 pipes Example' ;\par
+    cur: number= 175;\par
+\}\par
+\cf2\fs52 Interview questios on pipes\par
+\fs24 What is a pure pipe?\par
+\par
+What is an async pipe?\par
+\par
+What kind of data can be used with async pipe?\par
+\par
+How do you create a custom pipe?\par
+\par
+How does async pipe prevents memory leeks?\par
+\par
+Async pipe knows about the lifespan of the component and unscubscribes from the observable if necessary.\par
+\par
+What is the difference between pure and impure pipes?\par
+\par
+Pure Pipes:\par
+\par
+Input parameters value determine the output so if input parameters don\rquote t change the output doesn\rquote t change.\par
+Can be shared across many usages without affecting the output result.\par
+Pure pipes are pure functions that are easy to test.\par
+Impure Pipes:\par
+\par
+Cannot use the input value to determine if the output will change.\par
+Cannot be shared because the internal state can be affected from outside.\par
+\cf5\fs40 Angular 2 Custom Pipes \par
+\cf1\fs22 Pure pipe\cf5 : \cf7 This will run only for pure changes in component properties\cf5 .\par
+\cf1 Impure pipe\cf5 : \cf7 This will run for any type of changes in component properties\cf5\fs40 .\par
+Example:  \cf7\fs22 first we have to create pipe with\cf5\fs40  cmnd \cf2\fs22 ng g p pipename\par
+\cf7  then a pipe.ts will be created with @pipe \{name\}. WE have to yse that pipe same as we use built in pipe.\par
+\cf2 All the functionality you needed for pipe to work is placed in pipe.ts file\cf7\par
+\cf6\par
+\par
+import \{Pipe, PipeTransform\} from '@angular/core';\par
+ \par
+@pipe(\{\par
+    name: 'tempConverter'\par
+\})\par
+export class TempConverterPipe implements PipeTransform \{\par
+    transform(value: number, unit: string) \{\par
+        if(value && !isNaN(value)) \{\par
+            if (unit === 'C') \{\par
+                var temperature = (value - 32) /1.8 ;\par
+                return temperature.toFixed(2);\par
+            \} else if (unit === 'F')\{\par
+                var temperature = (value * 1.8 ) + 32\par
+                return temperature.toFixed(2);\par
+            \}\par
+        \}\par
+        return;\par
+    \}\par
+\}\par
+\cf2 in html file \cf6\par
+<div class='panel panel-primary'>\par
+<div class='panel-heading'>\par
+    <p>\{\{title\}\} </p>\par
+</div>\par
+<div class="panel-body">\par
+ \par
+<div class="row">\par
+    <h3>Fahrenheit to Celsius </h3>\par
+    <p> Fahrenheit : <input type="text" [(ngModel)]="Fahrenheit"/> \par
+             Celsius : \{\{Fahrenheit | tempConverter:'C'\}\} </p>\par
+</div>\par
+ \par
+<div class="row">\par
+    <h3>Celsius to Fahrenheit </h3>\par
+    <p> celsius : <input type="text" [(ngModel)]="celcius"/> \par
+             Fahrenheit : \{\{celcius | tempConverter:'F'\}\} </p>\par
+</div>\par
+ \par
+</div>\par
+</div>\par
+\par
+\cf7\fs40 Above information is from  \cf3 TEKTUTORIAL \cf7 ANY QUERIES CAN REFRE THIS SITE\fs22\par
+}
+ 
